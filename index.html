@@ -1,36 +1,165 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Chemical Storage Safety Monitoring</title>
+<title>Chemical Storage Safety Monitoring System</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#f4f7fa;
+}
+
+header{
+background:#0d47a1;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.hero{
+text-align:center;
+padding:30px;
+}
+
+.hero img{
+width:400px;
+max-width:90%;
+border-radius:10px;
+}
+
+.section{
+padding:20px 40px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,button{
+padding:10px;
+font-size:16px;
+margin:10px;
+}
+
+button{
+background:#0d47a1;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#result{
+font-weight:bold;
+margin-top:10px;
+}
+
+footer{
+background:#0d47a1;
+color:white;
+text-align:center;
+padding:15px;
+}
+</style>
 </head>
+
 <body>
+
+<header>
 <h1>Chemical Storage Safety Monitoring System</h1>
+<p>Smart Monitoring for Safe Chemical Storage</p>
+</header>
 
-<input type="number" id="qty" placeholder="Enter Quantity in KG">
-<button onclick="checkStorage()">Check Status</button>
+<div class="hero">
+<img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1000" alt="Chemical Storage">
+</div>
 
-<p id="result"></p>
+<div class="section">
+
+<div class="card">
+<h2>About the Project</h2>
+<p>
+This project helps industries monitor chemical storage levels.
+It provides alerts when the storage exceeds the safe limit
+or when the chemical quantity becomes too low.
+</p>
+</div>
+
+<div class="card">
+<h2>Objectives</h2>
+<ul>
+<li>Monitor chemical quantity</li>
+<li>Improve storage safety</li>
+<li>Prevent overflow accidents</li>
+<li>Reduce chemical wastage</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Storage Monitoring</h2>
+
+<input type="number" id="qty"
+placeholder="Enter Quantity in KG">
+
+<button onclick="checkStorage()">
+Check Status
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<div class="card">
+<h2>Key Features</h2>
+<ul>
+<li>Real-time monitoring</li>
+<li>Safety alerts</li>
+<li>Tank fill percentage calculation</li>
+<li>Easy-to-use interface</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Team</h2>
+<p>Developed by Jeevan</p>
+</div>
+
+</div>
+
+<footer>
+Chemical Storage Safety Monitoring System © 2026
+</footer>
 
 <script>
-function checkStorage() {
-  let quantity = Number(document.getElementById("qty").value);
+function checkStorage(){
 
-  if(quantity > 100){
-    document.getElementById("result").innerHTML =
-      "ALERT: Storage exceeds maximum safe limit!";
-  }
-  else if(quantity < 5){
-    document.getElementById("result").innerHTML =
-      "ALERT: Storage level is VERY LOW!";
-  }
-  else if(quantity <= 10){
-    document.getElementById("result").innerHTML =
-      "ALERT: Chemical level is low!";
-  }
-  else{
-    document.getElementById("result").innerHTML =
-      "Storage level is within safe limits.";
-  }
+let q =
+Number(document.getElementById("qty").value);
+
+let msg="";
+
+if(q>100){
+msg="🚨 ALERT: Storage exceeds maximum safe limit!";
+}
+else if(q<5){
+msg="⚠️ VERY LOW CHEMICAL LEVEL!";
+}
+else if(q<=10){
+msg="⚠️ Chemical level is low!";
+}
+else{
+msg="✅ Storage level is within safe limits.";
+}
+
+let percent=(q/100)*100;
+
+document.getElementById("result").innerHTML=
+msg+"<br><br>Tank Fill Percentage: "+
+percent.toFixed(2)+"%";
 }
 </script>
 
