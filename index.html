@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chemical Storage Safety Monitoring</title>
+</head>
+<body>
+<h1>Chemical Storage Safety Monitoring System</h1>
+
+<input type="number" id="qty" placeholder="Enter Quantity in KG">
+<button onclick="checkStorage()">Check Status</button>
+
+<p id="result"></p>
+
+<script>
+function checkStorage() {
+  let quantity = Number(document.getElementById("qty").value);
+
+  if(quantity > 100){
+    document.getElementById("result").innerHTML =
+      "ALERT: Storage exceeds maximum safe limit!";
+  }
+  else if(quantity < 5){
+    document.getElementById("result").innerHTML =
+      "ALERT: Storage level is VERY LOW!";
+  }
+  else if(quantity <= 10){
+    document.getElementById("result").innerHTML =
+      "ALERT: Chemical level is low!";
+  }
+  else{
+    document.getElementById("result").innerHTML =
+      "Storage level is within safe limits.";
+  }
+}
+</script>
+
+</body>
+</html>
